@@ -6,6 +6,8 @@ var ServicebookingSchema = new mongoose.Schema({
   
   Customer_Name: String,
 
+  Customer_id: String,
+
   Customer_Phone: Number,
 
   Customer_Address: String,
@@ -15,6 +17,8 @@ var ServicebookingSchema = new mongoose.Schema({
   Vehicle_Type : String,
 
   Services: Array,
+
+  Subserivces: Array,
 
   Pickup_Date: Date,
 
@@ -37,6 +41,12 @@ var ServicebookingSchema = new mongoose.Schema({
   Lubricant_type:String,
 
   Payment: String,
+
+  Vehiclepickup_Status: String,
+
+  Vehicledelivery_Status :String,
+
+  Vehicleservice_Status :String,
 
 });
 mongoose.model('Servicebooking', ServicebookingSchema);

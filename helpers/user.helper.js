@@ -26,7 +26,7 @@ SMTPTransport.use('compile', hbs(hbsOptions));
 
 
 module.exports.sendEmail = (to, subject, template, data) => {
-    const from = "Omam <anjani513devi@gmail.com>";
+    const from = " <anjani513devi@gmail.com>";
     console.log("please check the " , data);
     let mailOptions = {
         from: from,

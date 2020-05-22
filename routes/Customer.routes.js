@@ -20,16 +20,11 @@ router.post('/create', async function(req, res) {
            Gender : req.body.Gender,
            DOB : req.body.DOB,
            Email:req.body.Email,
+           Type:req.body.Type,
            Password:req.body.Password,
            Address : req.body.Address,
            Phone : req.body.Phone,
-           Profile_Pic : req.body.Profile_Pic,
-           Vehicle_Type : req.body.Vehicle_Type,
-           Services : req.body.Services,
-           Service_Date : req.body.Service_Date,
-           Service_Time : req.body.Service_Time,
-           Vehicle_Image: req.body.Vehicle_Image,
-           Vehicle_No: req.body.Vehicle_No
+           Profile_Pic : req.body.Profile_Pic
         }, 
         function (err, user) {
           console.log(user)

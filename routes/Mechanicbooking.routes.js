@@ -10,11 +10,12 @@ router.post('/create', async function(req, res) {
   try{
      await MechanicbookingModel.create({
            Customer_Name : req.body.Customer_Name,
+           Customer_id:req.body.Customer_id,
            Customer_Phone : req.body.Customer_Phone,
            Customer_Address : req.body.Customer_Address,
            Customer_Email : req.body.Customer_Email,
-           Vehicle_Type : req.body.Vehicle_Type,
            Services : req.body.Services,
+           Subserivces: req.body.Subserivces,
            Pickup_Date : req.body.Pickup_Date,
            Pickup_Time : req.body.Pickup_Time,
            Delivery_Time : req.body.Delivery_Time,
@@ -25,7 +26,10 @@ router.post('/create', async function(req, res) {
            Mechanic_Name:req.body.Mechanic_Name,
            Mechanic_Phone:req.body.Mechanic_Phone,
            Pick_up:req.body.Pick_up,
-           Payment:req.body.Payment
+           Payment:req.body.Payment,
+           Vehiclepickup_Status:req.body.Vehiclepickup_Status,
+           Vehicledelivery_Status:req.body.Vehicledelivery_Status,
+           Vehicleservice_Status: req.body.Vehicleservice_Status,
         }, 
         function (err, user) {
           console.log(user)
@@ -45,10 +49,21 @@ router.get('/getlist', function (req, res) {
         });
 });
 
+router.post('/individuallist', function (req, res) {
+  
+        MechanicbookingModel.find({Customer_id:req.body.Customer_id}, function (err, Servicebookingdetails) {
+          res.json({Status:"Success",Message:"Servicebookingdetails", Data : Servicebookingdetails ,Code:200});
+        });
+});
+router.post('/status', function (req, res) {
+        MechanicbookingModel.findByIdAndUpdate(req.body.Servicebooking_id,req.body, {new: true} ,function (err, Servicebookingdetails) {
+          res.json({Status:"Success",Message:"Servicebookingdetails", Data : Servicebookingdetails ,Code:200});
+        });
+});
 
 router.post('/edit', function (req, res) {
         MechanicbookingModel.findByIdAndUpdate(req.body.Servicebooking_id, req.body, {new: true}, function (err, UpdatedDetails) {
-            if (err) returnres.json({Status:"Failed",Message:"Internal Server Error", Data : {},Code:500});
+            if (err) return res.json({Status:"Failed",Message:"Internal Server Error", Data : {},Code:500});
              res.json({Status:"Success",Message:"Servicebookingdetails Updated", Data : UpdatedDetails ,Code:200});
         });
 });

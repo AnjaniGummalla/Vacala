@@ -12,6 +12,8 @@ var ServiceRouter = require('./routes/services.routes');
 var SubserviceRouter = require('./routes/Subservice.routes');
 var CustomerRouter = require('./routes/Customer.routes');
 var BookingRouter = require('./routes/Mechanicbooking.routes');
+var LocationRouter = require('./routes/Location.routes');
+var VehicletypeRouter = require('./routes/Vehicletype.routes')
 
 const mongoose = require('mongoose'); 
 mongoose.connect('mongodb://localhost:27017/myvacala'); 
@@ -33,7 +35,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/admin', usersRouter);
+app.use('/', usersRouter);
 app.use('/driver', DriverRouter);
 app.use('/mechanic', MechanicRouter);
 app.use('/vehicle', VehicleRouter);
@@ -41,6 +43,8 @@ app.use('/service', ServiceRouter);
 app.use('/subservice',SubserviceRouter);
 app.use('/customer',CustomerRouter);
 app.use('/booking',BookingRouter);
+app.use('/location',LocationRouter);
+app.use('/vehicletype',VehicleRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

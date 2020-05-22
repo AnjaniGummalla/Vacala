@@ -16,11 +16,11 @@ var CustomerSchema = new mongoose.Schema({
   
   Address: String,
 
+  Type: Number,
+
   Phone: Number,
 
   Profile_Pic: String,
-
-  Vehicle_Type : String,
 
   Services: String,
 
@@ -33,10 +33,6 @@ var CustomerSchema = new mongoose.Schema({
   Service_Time: String,
 
   Payment : String,
-
-  Vehicle_Image: String,
-
-  Vehicle_No: String,
 
 });
 mongoose.model('Customer', CustomerSchema);
